@@ -2,7 +2,6 @@ package com.sieck.communicator.services;
 
 import com.sieck.communicator.domain.Message;
 import com.sieck.communicator.repository.MessageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -15,10 +14,7 @@ public class MessageService implements ServiceInterface<Message>{
         this.messageRepository = messageRepository;
     }
 
-    public Message sendMessage(Message message){
-        Message message1 = new Message(message.getText(), message.getDate(), message.getAuthor());
-        return messageRepository.save(message1);
-    }
+    public Message sendMessage(Message message){ return messageRepository.save(message); }
 
     public List<Message> getAllMessages(){
         return messageRepository.findAll();
