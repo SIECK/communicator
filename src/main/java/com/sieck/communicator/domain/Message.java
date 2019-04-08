@@ -17,10 +17,6 @@ public class Message {
     private Date date;
     private String author;
 
-    public Message(){
-
-    }
-
     public Message(String text, Date date, String author) {
         this.text = text;
         this.date = date;

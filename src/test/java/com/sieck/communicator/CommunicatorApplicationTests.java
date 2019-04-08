@@ -2,6 +2,7 @@ package com.sieck.communicator;
 
 import com.sieck.communicator.domain.Message;
 import com.sieck.communicator.services.MessageService;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

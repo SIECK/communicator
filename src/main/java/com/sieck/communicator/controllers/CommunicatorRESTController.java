@@ -14,9 +14,11 @@ import java.util.stream.Collectors;
 @RestController
 public class CommunicatorRESTController {
     private MessageService messageService;
+    private MessageResourceAssembler messageResourceAssembler;
 
-    public CommunicatorRESTController(MessageService messageService) {
+    public CommunicatorRESTController(MessageService messageService, MessageResourceAssembler messageResourceAssembler) {
         this.messageService = messageService;
+        this.messageResourceAssembler = messageResourceAssembler;
     }
 
     @PostMapping(value = "/messages")
@@ -32,9 +34,7 @@ public class CommunicatorRESTController {
         //Source of this piece of code:
         //https://spring.io/guides/tutorials/bookmarks/?fbclid=IwAR3_N0aoQ0Y0NtlaBQgHk77w_C_A4zGDGbmAaqYqqAZvjfOkITipGnjOBY4
         List<Resource<Message>> messages = messageService.getAllMessages().stream()
-                .map(message -> new Resource<>(message,
-                    linkTo(methodOn(CommunicatorRESTController.class).one(message.getMessageId())).withSelfRel(),
-                    linkTo(methodOn(CommunicatorRESTController.class).all()).withRel("message")))
+                .map(messageResourceAssembler::toResource)
                 .collect(Collectors.toList());
 
         return new Resources<>(messages,
@@ -46,13 +46,10 @@ public class CommunicatorRESTController {
     public @ResponseBody
     Resource<Message> one(@PathVariable("id") String id) {
 
-        Message message = messageService.getMessageById(id);
-
         //Source of this piece of code:
         //https://spring.io/guides/tutorials/bookmarks/?fbclid=IwAR3_N0aoQ0Y0NtlaBQgHk77w_C_A4zGDGbmAaqYqqAZvjfOkITipGnjOBY4
-        return new Resource<>(message,
-                linkTo(methodOn(CommunicatorRESTController.class).one(id)).withSelfRel(),
-                linkTo(methodOn(CommunicatorRESTController.class).all()).withRel("message"));
+        Message message = messageService.getMessageById(id);
+        return messageResourceAssembler.toResource(message);
         //
     }
 
