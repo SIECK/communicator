@@ -56,7 +56,7 @@ public class CommunicatorRESTController {
 
     @GetMapping("/messages/{id}")
     public @ResponseBody
-    Resource<Message> one(@PathVariable("id") String id) {
+    Resource<Message> oneMessage(@PathVariable("id") String id) {
 
         //Source of this piece of code:
         //https://spring.io/guides/tutorials/bookmarks/?fbclid=IwAR3_N0aoQ0Y0NtlaBQgHk77w_C_A4zGDGbmAaqYqqAZvjfOkITipGnjOBY4
@@ -78,7 +78,7 @@ public class CommunicatorRESTController {
 
     @GetMapping(value = "/images/{id}")
     public @ResponseBody
-    void getImage(@PathVariable("id") String id) throws IOException {
+    void onePicture(@PathVariable("id") String id) throws IOException {
 
     }
 
