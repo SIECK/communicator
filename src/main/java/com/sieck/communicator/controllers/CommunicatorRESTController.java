@@ -1,11 +1,14 @@
 package com.sieck.communicator.controllers;
 
+import com.mongodb.client.gridfs.model.GridFSFile;
+import com.mongodb.gridfs.GridFSDBFile;
 import com.sieck.communicator.domain.Picture;
 import com.sieck.communicator.domain.Message;
 import com.sieck.communicator.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.gridfs.GridFsResource;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +44,7 @@ public class CommunicatorRESTController {
 
     @GetMapping("/messages")
     public @ResponseBody
-    Resources<Resource<Message>> all(){
+    Resources<Resource<Message>> allMessages(){
 
         //Source of this piece of code:
         //https://spring.io/guides/tutorials/bookmarks/?fbclid=IwAR3_N0aoQ0Y0NtlaBQgHk77w_C_A4zGDGbmAaqYqqAZvjfOkITipGnjOBY4
@@ -50,7 +53,7 @@ public class CommunicatorRESTController {
                 .collect(Collectors.toList());
 
         return new Resources<>(messages,
-                linkTo(methodOn(CommunicatorRESTController.class).all()).withSelfRel());
+                linkTo(methodOn(CommunicatorRESTController.class).allMessages()).withSelfRel());
         //
     }
 
@@ -71,15 +74,16 @@ public class CommunicatorRESTController {
 
     @PostMapping(value = "/images")
     public @ResponseBody
-    void sendPicture(@RequestBody Picture Picture) throws FileNotFoundException {
-        FileInputStream inputStream = new FileInputStream("C:\\Copy.png");
-        gridFsOperations.store(inputStream, "testPicture.png");
+    void sendPicture() throws FileNotFoundException {
+        FileInputStream inputStream = new FileInputStream("C:\\testPicture.png");
+        gridFsOperations.store(inputStream, "just another picture");
     }
 
     @GetMapping(value = "/images/{id}")
     public @ResponseBody
-    void onePicture(@PathVariable("id") String id) throws IOException {
-
+    String onePicture(@PathVariable("id") String id) {
+        GridFSFile gridFSFile = gridFsOperations.findOne(Query.query(Criteria.where("_id").is(id)));
+        return gridFSFile.toString();
     }
 
     @DeleteMapping("/images/{id}")
