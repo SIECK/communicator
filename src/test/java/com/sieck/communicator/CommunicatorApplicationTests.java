@@ -2,7 +2,6 @@ package com.sieck.communicator;
 
 import com.sieck.communicator.domain.Message;
 import com.sieck.communicator.services.MessageService;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,8 +20,8 @@ public class CommunicatorApplicationTests {
 	@Autowired
 	MessageService messageService;
 
-	Date date;
-	Message message;
+	private Date date;
+	private Message message;
 
 	@Before
 	public void initializeObjects(){
@@ -41,15 +38,15 @@ public class CommunicatorApplicationTests {
 
 	@Test
 	public void messageShouldBeSent(){
-		messageService.sendMessage(message);
-		assertEquals(message, messageService.getMessageById(message.getMessageId()));
+		messageService.send(message);
+		assertEquals(message, messageService.getById(message.getMessageId()));
 	}
 
 	@Test
 	public void messageShouldBeDeleted(){
-		messageService.sendMessage(message);
-		assertEquals(message, messageService.getMessageById(message.getMessageId()));
-		messageService.deleteMessageById(message.getMessageId());
-		assertFalse(messageService.getAllMessages().contains(message.getMessageId()));
+		messageService.send(message);
+		assertEquals(message, messageService.getById(message.getMessageId()));
+		messageService.deleteById(message.getMessageId());
+		assertFalse(messageService.getAll().contains(message.getMessageId()));
 	}
 }

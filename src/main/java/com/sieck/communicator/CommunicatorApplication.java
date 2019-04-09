@@ -23,6 +23,6 @@ public class CommunicatorApplication implements CommandLineRunner{
 	public void run(String... args) {
 		Date date = new Date();
 		Message message = new Message("TXT", date, "AUT");
-		messageService.sendMessage(message);
+		messageService.send(message);
 	}
 }

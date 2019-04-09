@@ -1,12 +1,11 @@
 package com.sieck.communicator.services;
 
-import com.sieck.communicator.domain.Message;
-
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public interface ServiceInterface<T> {
-    Message sendMessage(T obj);
-    List<T> getAllMessages();
-    T getMessageById(String id);
-    void deleteMessageById(String id);
+    T send(T obj) throws FileNotFoundException;
+    List<T> getAll();
+    T getById(String id);
+    void deleteById(String id);
 }
