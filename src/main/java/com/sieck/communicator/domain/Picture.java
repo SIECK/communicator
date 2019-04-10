@@ -1,24 +1,14 @@
 package com.sieck.communicator.domain;
 
-import com.mongodb.MongoClient;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Data;
 
-@Document
-public class Picture extends AbstractMongoConfiguration {
+@Data
+public class Picture {
+    private String name;
+    private String path;
 
-    @Value("${jsa.mongo.address}")
-    private String mongoAddress;
-
-    @Value("${jsa.mongo.database}")
-    private String mongoDatabase;
-
-    public MongoClient mongoClient(){
-        return new MongoClient(mongoAddress);
-    }
-
-    public String getDatabaseName(){
-        return mongoDatabase;
+    public Picture(String name, String path) {
+        this.name = name;
+        this.path = path;
     }
 }

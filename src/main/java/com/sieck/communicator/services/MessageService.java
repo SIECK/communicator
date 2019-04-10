@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MessageService implements ServiceInterface<Message>{
+public class MessageService implements MessageInterface<Message>{
 
     private MessageRepository messageRepository;
 
@@ -15,7 +15,7 @@ public class MessageService implements ServiceInterface<Message>{
         this.messageRepository = messageRepository;
     }
 
-    public Message send(Message message){ return messageRepository.save(message); }
+    public void send(Message message){ messageRepository.save(message); }
 
     public List<Message> getAll(){
         return messageRepository.findAll();

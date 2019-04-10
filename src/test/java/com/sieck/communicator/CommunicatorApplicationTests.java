@@ -1,7 +1,9 @@
 package com.sieck.communicator;
 
 import com.sieck.communicator.domain.Message;
+import com.sieck.communicator.domain.Picture;
 import com.sieck.communicator.services.MessageService;
+import com.sieck.communicator.services.PictureService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.FileNotFoundException;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,6 +22,9 @@ public class CommunicatorApplicationTests {
 
 	@Autowired
 	MessageService messageService;
+
+	@Autowired
+	PictureService pictureService;
 
 	private Date date;
 	private Message message;

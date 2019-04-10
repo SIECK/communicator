@@ -1,14 +1,13 @@
 package com.sieck.communicator.controllers;
 
 import com.mongodb.client.gridfs.model.GridFSFile;
-import com.mongodb.gridfs.GridFSDBFile;
-import com.sieck.communicator.domain.Picture;
 import com.sieck.communicator.domain.Message;
+import com.sieck.communicator.domain.Picture;
 import com.sieck.communicator.services.MessageService;
+import com.sieck.communicator.services.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.gridfs.GridFsResource;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,6 @@ import org.springframework.data.mongodb.gridfs.GridFsOperations;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,19 +25,18 @@ import java.util.stream.Collectors;
 public class CommunicatorRESTController {
     private MessageService messageService;
     private MessageResourceAssembler messageResourceAssembler;
+    private PictureService pictureService;
 
-    @Autowired
-    private GridFsOperations gridFsOperations;
-
-    public CommunicatorRESTController(MessageService messageService, MessageResourceAssembler messageResourceAssembler) {
+    public CommunicatorRESTController(MessageService messageService, MessageResourceAssembler messageResourceAssembler, PictureService pictureService) {
         this.messageService = messageService;
         this.messageResourceAssembler = messageResourceAssembler;
+        this.pictureService = pictureService;
     }
 
     @PostMapping(value = "/messages")
     public @ResponseBody
-    Message sendMessage(@RequestBody Message message){
-        return messageService.send(message);
+    void sendMessage(@RequestBody Message message){
+        messageService.send(message);
     }
 
     @GetMapping("/messages")
@@ -70,25 +67,23 @@ public class CommunicatorRESTController {
 
     @DeleteMapping("/messages/{id}")
     public @ResponseBody
-    void deleteMessageById(@PathVariable("id") String id){messageService.deleteById(id); }
+    void deleteMessageById(@PathVariable("id") String id) { messageService.deleteById(id); }
 
     @PostMapping(value = "/images")
     public @ResponseBody
-    void sendPicture() throws FileNotFoundException {
-        FileInputStream inputStream = new FileInputStream("C:\\testPicture.png");
-        gridFsOperations.store(inputStream, "just another picture");
+    void sendPicture(@RequestBody Picture picture) throws FileNotFoundException {
+        pictureService.send(picture);
     }
 
     @GetMapping(value = "/images/{id}")
     public @ResponseBody
     String onePicture(@PathVariable("id") String id) {
-        GridFSFile gridFSFile = gridFsOperations.findOne(Query.query(Criteria.where("_id").is(id)));
-        return gridFSFile.toString();
+        return pictureService.getById(id);
     }
 
     @DeleteMapping("/images/{id}")
     public @ResponseBody
     void deletePictureById(@PathVariable("id") String id){
-        gridFsOperations.delete(new Query(Criteria.where("_id").is(id)));
+        pictureService.deleteById(id);
     }
 }
