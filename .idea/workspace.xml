@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3dedba2-87da-4f33-a5da-586495f37089" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sieck/communicator/services/MessageInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sieck/communicator/services/PictureInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sieck/communicator/services/PictureService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sieck/communicator/controllers/CommunicatorRESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sieck/communicator/controllers/CommunicatorRESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sieck/communicator/domain/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sieck/communicator/domain/Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sieck/communicator/services/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sieck/communicator/services/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sieck/communicator/services/ServiceInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/sieck/communicator/CommunicatorApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/sieck/communicator/CommunicatorApplicationTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -106,7 +97,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sieck/communicator/controllers/CommunicatorRESTController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
+            <state relative-caret-position="361">
               <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -337,7 +328,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554886992994" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554891620964" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -469,7 +460,7 @@
       <workItem from="1554750421486" duration="13183000" />
       <workItem from="1554798052239" duration="24756000" />
       <workItem from="1554841003445" duration="1580000" />
-      <workItem from="1554884968825" duration="2023000" />
+      <workItem from="1554884968825" duration="2749000" />
     </task>
     <task id="LOCAL-00001" summary="Stworzenie klasy Message, MessageRepository, MessageService.">
       <created>1554627322390</created>
@@ -534,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554833254778</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Aktualizacja klasy Picture i PictureService.">
+      <created>1554887090366</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1554887090366</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -570,11 +568,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64358000" />
+    <option name="totallyTimeSpent" value="65084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="-7" width="1486" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23492286" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -586,7 +583,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3324397" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.37801608" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.37801608" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3243968" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -632,7 +629,8 @@
     <MESSAGE value="Dodanie klasy Picture i rozbudowanie kontolera o POST i DELETE na obrazkach." />
     <MESSAGE value="Zmiana nazw metod w kontrolerze" />
     <MESSAGE value="Drobne zmiany." />
-    <option name="LAST_COMMIT_MESSAGE" value="Drobne zmiany." />
+    <MESSAGE value="Aktualizacja klasy Picture i PictureService." />
+    <option name="LAST_COMMIT_MESSAGE" value="Aktualizacja klasy Picture i PictureService." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
@@ -888,7 +886,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sieck/communicator/controllers/CommunicatorRESTController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
+        <state relative-caret-position="361">
           <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
           <folding>
             <element signature="imports" expanded="true" />
