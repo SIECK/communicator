@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class Picture {
+
     private String name;
     private String path;
 

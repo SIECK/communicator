@@ -1,22 +1,15 @@
 package com.sieck.communicator.controllers;
 
-import com.mongodb.client.gridfs.model.GridFSFile;
 import com.sieck.communicator.domain.Message;
 import com.sieck.communicator.domain.Picture;
 import com.sieck.communicator.services.MessageService;
 import com.sieck.communicator.services.PictureService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
-import org.springframework.data.mongodb.gridfs.GridFsOperations;
-
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;

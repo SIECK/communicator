@@ -12,7 +12,6 @@ public class Message {
 
     @Id
     private String messageId;
-
     private String text;
     private Date date;
     private String author;
