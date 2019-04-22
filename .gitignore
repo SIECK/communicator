@@ -24,3 +24,4 @@ target/
 mvnw
 mvnw.cmd
 .mvn/wrapper
+src/main/resources/application.properties
